@@ -1,3 +1,11 @@
+.welcome-column h1{
+    text-align: left;
+}
+
+.welcome-column h2{
+    text-align: left;
+}
+
 .menu-container {
     max-width: 500px;
     margin: 0 auto;
@@ -141,6 +149,7 @@
 }
 
 .bottom-container{
+    margin-top: 10px;
     min-width: 100%;
     display: flex;
     flex-direction: row;
@@ -197,5 +206,60 @@
 }
 
 
+
+
+.category-tabs-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 10px; /* Add some bottom padding to separate from content */
+}
+
+.category-tab {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px; /* Adjust as needed */
+    cursor: pointer;
+    border-radius: 8px;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.category-tab.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.cart-button-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background-color: #ffffff; /* Adjust background color as needed */
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+}
+
+.cart-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    width: 80vw;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.cart-button:hover {
+    background-color: #0056b3; /* Adjust button color on hover */
+}
 
 
