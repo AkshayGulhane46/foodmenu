@@ -9,7 +9,7 @@
 .menu-container {
     max-width: 500px;
     margin: 0 auto;
-    padding: 20px;
+    
 }
 
 .menu-header {
@@ -75,11 +75,12 @@
 
 .dish-item {
     margin-bottom: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #ff0000;
     border-radius: 8px;
     padding: 10px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 0px rgb(255 0 0);
+
 }
 
 .dish-details {
@@ -99,11 +100,11 @@
 .quantity-btns {
     display: flex;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
 }
 
 .quantity-btn {
-    background-color: #4CAF50;
+    background-color: #000000;
     color: #fff;
     cursor: pointer;
 }
@@ -187,10 +188,10 @@
 
 
 .add-to-cart-btn {
-    background-color: #4CAF50;
+    background-color: #000000;
     color: white;
     border: none;
-    box-shadow: 3px 2px 0px 0px #c1f6c3;
+    box-shadow: 3px 2px 0px 0px #4b4b4b;
     font-weight: bold;
     border-radius: 0.5rem;
     padding: 8px 16px;
@@ -227,7 +228,7 @@
 }
 
 .category-tab.active {
-    background-color: #007bff;
+    background-color: green;
     color: #fff;
 }
 
@@ -262,4 +263,39 @@
     background-color: #0056b3; /* Adjust button color on hover */
 }
 
+.veg-dish {
+    border-color: green;
+    box-shadow: 0px 2px 0px rgb(0, 255, 68);
+}
 
+/* Regular styles for search box */
+.search-box {
+    width: 80vw;
+    max-width: 300px; /* Adjust width as needed */
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 600px) {
+    .search-box {
+        max-width: 100%; /* Make search box full width on mobile devices */
+    }
+}
+
+
+.header{    
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1000;
+    padding-top: 30px;
+    background-color: white;
+}

@@ -12,6 +12,8 @@
         const [customerName, setCustomerName] = useState('');
         const [customerID, setCustomerID] = useState(localStorage.getItem('customerID') || "");
         const [cartItems, setCartItems] = useState([]);
+        const [searchQuery, setSearchQuery] = useState('');
+        const [isSticky, setIsSticky] = useState(false);
         const navigate = useNavigate();
 
         useEffect(() => {
@@ -35,6 +37,10 @@
             } catch (error) {
                 console.error("Error fetching customer info:", error);
             }
+        };
+
+        const handleSearchInputChange = (e) => {
+            setSearchQuery(e.target.value);
         };
 
         const fetchDishes = async () => {
@@ -110,6 +116,28 @@
             setDishes(updatedDishes);
         };
 
+        useEffect(() => {
+            // Function to handle scroll event
+            const handleScroll = () => {
+                const header = document.getElementById("myHeader");
+                const sticky = header.offsetTop;
+    
+                if (window.scrollY > sticky) {
+                    setIsSticky(true);
+                } else {
+                    setIsSticky(false);
+                }
+            };
+    
+            // Attach event listener for scroll event
+            window.addEventListener('scroll', handleScroll);
+    
+            // Cleanup function to remove event listener
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            };
+        }, []); // Empty dependency array ensures the effect is only run once
+
     
         return (
         <div className="menu-container">
@@ -117,32 +145,47 @@
                 <h1 className="menu-header">Menu</h1>
                 <h2 className="welcome-message">Welcome {customerName}</h2>
             </div>
-            <div className="category-tabs-container">
-            <button
-                className={`category-tab ${selectedCat === "" ? 'active' : ''}`}
-                onClick={() => handleCatFilterChange({ target: { value: "" } })}
-            >
-                All
-            </button>
-            {dishCats.map((cat, index) => (
-                <button
-                    key={index}
-                    className={`category-tab ${selectedCat === cat ? 'active' : ''}`}
-                    onClick={() => handleCatFilterChange({ target: { value: cat } })}
-                >
-                    {cat}
-                </button>
-            ))}
+            <div id= "myHeader" className={isSticky ? "sticky" : ""}>
+                <div className="search-box-container"></div>
+                    <input
+                        type="text"
+                        placeholder="Search by dish name"
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                        className="search-box"
+                    />
+                    <div className="category-tabs-container">
+                        <button
+                            className={`category-tab ${selectedCat === "" ? 'active' : ''}`}
+                            onClick={() => handleCatFilterChange({ target: { value: "" } })}
+                        >
+                            All
+                        </button>
+
+                        {dishCats.map((cat, index) => (
+                            <button
+                                key={index}
+                                className={`category-tab ${selectedCat === cat ? 'active' : ''}`}
+                                onClick={() => handleCatFilterChange({ target: { value: cat } })}
+                            >
+                                {cat}
+                            </button>
+                        )
+                    )
+                }
+            </div>
         </div>
 
-                <div className="dish-list-container">
+        <div className="dish-list-container">
         {selectedCat !== "" ? (
             <div>
                 <h2>{selectedCat}</h2>
                 <ul className="dish-list">
-                    {dishes.filter(dish => dish.DishCat === selectedCat).map((dish, index) => (
-                        <li key={index} className="dish-item">
-                            <div className='dish-container'>
+                    {dishes.
+                    filter(dish => dish.DishCat === selectedCat).
+                    filter(dish => dish.DishName.toLowerCase().includes(searchQuery.toLowerCase())).map((dish, index) => (
+                        <li key={index} className={`dish-item ${dish.DishVeg ? 'veg-dish' : ''}`}>
+                        <div className='dish-container'>
                                 <div className='left-container'>
                                         <div className="dish-name">{dish.DishName}</div>
                                         <div className='dish-price'><span class="WebRupee">&#x20B9;</span> {dish.DishPrice}</div>
@@ -177,13 +220,16 @@
                 <div key={index}>
                     <h2>{cat}</h2>
                     <ul className="dish-list">
-                        {dishes.filter(dish => dish.DishCat === cat).map((dish, index) => (
-                           <li key={index} className="dish-item">
+                        {dishes.filter(dish => dish.DishCat === cat).
+                        filter(dish => dish.DishName.toLowerCase().includes(searchQuery.toLowerCase())).map((dish, index) => (
+                           <li key={index} className={`dish-item ${dish.DishVeg ? 'veg-dish' : ''}`}>
                            <div className='dish-container'>
                                <div className='left-container'>
                                        <div className="dish-name">{dish.DishName}</div>
                                        <div className='dish-price'><span class="WebRupee">&#x20B9;</span> {dish.DishPrice}</div>
                                        <div className='dish-about'>{dish.DishAbout}</div>
+                                         <div className='dish-veg'>{dish.DishVeg}</div>
+                                       
                                </div>
                                <div className='right-container'>
                                        <div className='image-container'>
@@ -213,8 +259,9 @@
         )}
     </div>
     <div className="cart-button-container">
-    <Link to={`/cart?cartKey=${encodeURIComponent(customerID)}`} className="cart-button">Go to Cart</Link></div>            
+     <Link to={`/cart?cartKey=${encodeURIComponent(customerID)}`} className="cart-button">Go to Cart</Link></div>            
     </div>
+
         );
     };
 

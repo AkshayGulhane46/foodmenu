@@ -1,9 +1,13 @@
+// AdminPage.jsx
+
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, doc, updateDoc, deleteDoc , getDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc, deleteDoc, setDoc , serverTimestamp ,getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import '../styles/adminPage.css'; // Import CSS file
 
 const AdminPage = () => {
     const [customers, setCustomers] = useState([]);
+    const [customerName, setCustomerName] = useState('')
 
     useEffect(() => {
         fetchCustomers();
@@ -36,6 +40,26 @@ const AdminPage = () => {
             console.error('Error removing customer:', error);
         }
     };
+
+    const saveCustomer = async (customerId) => {
+        try {
+            const customerRef = doc(db, 'customers', customerId);
+            const customerSnapshot = await getDoc(customerRef);
+            if (customerSnapshot.exists()) {
+                const customerData = customerSnapshot.data();
+                const oldCustomersRef = collection(db, 'old_customers');
+                await setDoc(doc(db, 'old_customers', customerId), {
+                    ...customerData,
+                    movedAt: serverTimestamp()
+                });
+                await deleteDoc(customerRef);
+                fetchCustomers(); // Refresh the customer list
+            }
+        } catch (error) {
+            console.error('Error saving customer:', error);
+        }
+    };
+
 
     const changeStatus = async (customerId, itemIndex, newStatus) => {
         try {
@@ -86,38 +110,60 @@ const AdminPage = () => {
     };
 
     return (
-        <div>
+        <div className="admin-page">
             <h1>Admin Page</h1>
-            <ul>
-                {customers.map(customer => (
-                    <li key={customer.id}>
-                        <h2>{customer.customerName}</h2>
-                        <p>Total Order Value: {calculateTotalOrderValue(customer.cartItems)}</p>
-                        <button onClick={() => removeCustomer(customer.id)}>Remove Customer</button> {/* Add Remove Customer button */}
-                        <ul>
+            {customers.map(customer => (
+                <div key={customer.id} className="customer-box">
+                    <h2>{customer.customerName}</h2>
+                    <p>Total Order Value: {calculateTotalOrderValue(customer.cartItems)}</p>
+                    <button onClick={() => removeCustomer(customer.id)}>Remove Customer</button>
+                    <div className="add-customer">
+                    <h2>Add Customer</h2>
+                    <input
+                        type="text"
+                        placeholder="Customer Name"
+                        value={customerName}
+                        onChange={(e) => setCustomerName(e.target.value)}
+                    />
+                    <button onClick={saveCustomer}>Save Customer</button>
+                </div>
+                    <table className="order-table">
+                        <thead>
+                            <tr>
+                                <th>Dish</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             {customer.cartItems && customer.cartItems.map((item, index) => (
-                                <li key={index}>
-                                    <p>{item.DishName}</p>
-                                    <p>Quantity: {item.quantity}</p>
-                                    <p>Status: {item.status}</p>
-                                    {item.status === "Pending" && (
-                                        <>
-                                            <button onClick={() => changeStatus(customer.id, index, "Preparing")}>Start Preparing</button>
-                                            <button onClick={() => removeItem(customer.id, index)}>Remove</button>
-                                        </>
-                                    )}
-                                    {item.status === "Preparing" && (
-                                        <button onClick={() => changeStatus(customer.id, index, "Done")}>Mark as Done</button>
-                                    )}
-                                    <button onClick={() => updateQuantity(customer.id, index, item.quantity + 1)}>+</button>
-                                    <button onClick={() => updateQuantity(customer.id, index, item.quantity - 1)}>-</button>
-                                </li>
+                                <tr key={index}>
+                                    <td>{item.DishName}</td>
+                                    <td>{item.quantity}</td>
+                                    <td>{item.status}</td>
+                                    <td>
+                                        {item.status === "Pending" && (
+                                            <>
+                                                <button onClick={() => changeStatus(customer.id, index, "Preparing")}>Start Preparing</button>
+                                                <button onClick={() => removeItem(customer.id, index)}>Remove</button>
+                                            </>
+                                        )}
+                                        {item.status === "Preparing" && (
+                                            <button onClick={() => changeStatus(customer.id, index, "Done")}>Mark as Done</button>
+                                        )}
+                                        <button onClick={() => updateQuantity(customer.id, index, item.quantity + 1)}>+</button>
+                                        <button onClick={() => updateQuantity(customer.id, index, item.quantity - 1)}>-</button>
+                                    </td>
+                                </tr>
                             ))}
-                        </ul>
-                    </li>
-                ))}
-            </ul>
+                        </tbody>
+                    </table>
+                </div>
+                
+            ))}
         </div>
+        
     );
 };
 

@@ -41,6 +41,11 @@ const CartPage = () => {
         fetchCartItems();
     }, [cartKey]);
 
+    const handlePayment = () => {
+        // Logic to complete payment
+        alert(`Total Order Value: ${totalOrderValue}. Payment completed successfully!`);
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -48,27 +53,32 @@ const CartPage = () => {
     return (
         <div className="cart-page">
             <h1>Cart Page</h1>
-            <h2>Total Order Value: {totalOrderValue}</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Dish Name</th>
-                        <th>Price per item</th>
-                        <th>Quantity</th>
+                        <th>Dish</th>
+                        <th>Price</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     {cartItems.map((item, index) => (
                         <tr key={index}>
-                            <td>{item.DishName}</td>
+                            <td>{item.quantity} x {item.DishName}</td>
                             <td>{item.DishPrice}</td>
-                            <td>{item.quantity}</td>
                             <td>{item.status}</td>
                         </tr>
                     ))}
+                    <tr>
+                        <td colSpan="2">Total Order Value:</td>
+                        <td>{totalOrderValue}</td>
+                    </tr>
                 </tbody>
             </table>
+            <button className="pay-button">
+                <a href={`upi://pay?pa=${'7387870057@ybl'}&am=${totalOrderValue}&cu=INR`}>Pay by UPI</a>
+            </button>
+
             <Link to="/menu" className="back-to-menu-btn">Go back to Menu</Link>
         </div>
     );

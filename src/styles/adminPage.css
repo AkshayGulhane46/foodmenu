@@ -1,0 +1,60 @@
+/* adminPage.css */
+
+.admin-page {
+    padding: 20px;
+}
+
+.customer-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-table th,
+.order-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.order-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+    font-weight: bold; /* Bold font for table headings */
+}
+
+.order-table td {
+    text-align: center;
+}
+
+.order-table td button {
+    margin: 0 5px;
+    padding: 5px 10px; /* Padding for buttons */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove button border */
+    border-radius: 4px; /* Button border radius */
+    cursor: pointer;
+}
+
+.order-table td button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+}
+
+.back-btn {
+    margin-top: 20px; /* Margin for the back button */
+    background-color: #dc3545; /* Back button background color */
+    color: #fff; /* Back button text color */
+    padding: 10px 20px; /* Padding for the back button */
+    border: none; /* Remove back button border */
+    border-radius: 4px; /* Back button border radius */
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background-color: #c82333; /* Back button background color on hover */
+}
