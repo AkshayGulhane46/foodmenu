@@ -1,13 +1,21 @@
-/* adminPage.css */
-
 .admin-page {
     padding: 20px;
 }
 
+.customer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
 .customer-box {
     border: 1px solid #ccc;
+    border-radius: 5px;
     padding: 10px;
-    margin-bottom: 20px;
+}
+
+.customer-box > * {
+    margin-bottom: 10px;
 }
 
 .order-table {
@@ -17,44 +25,73 @@
 
 .order-table th,
 .order-table td {
-    border: 1px solid #ccc;
-    padding: 8px;
+    width: fit-content;
+    padding: 2px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    font-size: small;
+    text-align: -webkit-center;
 }
 
 .order-table th {
-    background-color: #f2f2f2;
-    text-align: left;
-    font-weight: bold; /* Bold font for table headings */
+    background-color: #f0f0f0;
 }
 
-.order-table td {
-    text-align: center;
+.order-table td:last-child {
+    white-space: nowrap;
 }
 
-.order-table td button {
-    margin: 0 5px;
-    padding: 5px 10px; /* Padding for buttons */
-    background-color: #007bff; /* Button background color */
-    color: #fff; /* Button text color */
-    border: none; /* Remove button border */
-    border-radius: 4px; /* Button border radius */
+.order-table button {
+    padding: 5px 8px;
+    margin-right: 5px;
+    font-size: 12px;
     cursor: pointer;
 }
 
-.order-table td button:hover {
-    background-color: #0056b3; /* Button background color on hover */
+.order-table button:last-child {
+    margin-right: 0;
 }
 
-.back-btn {
-    margin-top: 20px; /* Margin for the back button */
-    background-color: #dc3545; /* Back button background color */
-    color: #fff; /* Back button text color */
-    padding: 10px 20px; /* Padding for the back button */
-    border: none; /* Remove back button border */
-    border-radius: 4px; /* Back button border radius */
-    cursor: pointer;
+.status-buttons{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+
 }
 
-.back-btn:hover {
-    background-color: #c82333; /* Back button background color on hover */
+.status-buttons button{
+    margin: 5px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 3px;
+}
+
+.quantity-div{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.quantity-div button{
+    margin: 5px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 3px;
+}
+
+.remove-customer button{
+    background-color: red;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
 }
