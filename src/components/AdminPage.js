@@ -41,25 +41,8 @@ const AdminPage = () => {
         }
     };
 
-    const saveCustomer = async (customerId) => {
-        try {
-            const customerRef = doc(db, 'customers', customerId);
-            const customerSnapshot = await getDoc(customerRef);
-            if (customerSnapshot.exists()) {
-                const customerData = customerSnapshot.data();
-                const oldCustomersRef = collection(db, 'old_customers');
-                await setDoc(doc(db, 'old_customers', customerId), {
-                    ...customerData,
-                    movedAt: serverTimestamp()
-                });
-                await deleteDoc(customerRef);
-                fetchCustomers(); // Refresh the customer list
-            }
-        } catch (error) {
-            console.error('Error saving customer:', error);
-        }
-    };
 
+    
 
     const changeStatus = async (customerId, itemIndex, newStatus) => {
         try {
@@ -116,17 +99,9 @@ const AdminPage = () => {
                 <div key={customer.id} className="customer-box">
                     <h2>{customer.customerName}</h2>
                     <p>Total Order Value: {calculateTotalOrderValue(customer.cartItems)}</p>
+                    <p>{customer.tableNumber}</p>
                     <button onClick={() => removeCustomer(customer.id)}>Remove Customer</button>
-                    <div className="add-customer">
-                    <h2>Add Customer</h2>
-                    <input
-                        type="text"
-                        placeholder="Customer Name"
-                        value={customerName}
-                        onChange={(e) => setCustomerName(e.target.value)}
-                    />
-                    <button onClick={saveCustomer}>Save Customer</button>
-                </div>
+                  
                     <table className="order-table">
                         <thead>
                             <tr>

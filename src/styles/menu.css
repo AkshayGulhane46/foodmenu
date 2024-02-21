@@ -1,9 +1,11 @@
 .welcome-column h1{
-    text-align: left;
+    text-align: center;
 }
 
 .welcome-column h2{
     text-align: left;
+    text-align: center;
+    font-size: 20px;
 }
 
 .menu-container {
@@ -228,7 +230,7 @@
 }
 
 .category-tab.active {
-    background-color: green;
+    background-color: rgb(0, 0, 0);
     color: #fff;
 }
 
@@ -286,9 +288,12 @@
 }
 
 
-.header{    
-    margin-top: 20px;
-    padding-top: 20px;
+#myHeader{    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #f5eeee;
+    padding-top: 6px;
 }
 
 .sticky {

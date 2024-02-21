@@ -16,6 +16,8 @@
         const [isSticky, setIsSticky] = useState(false);
         const navigate = useNavigate();
 
+        
+
         useEffect(() => {
             fetchCustomerInfo();
             fetchDishes();
@@ -141,6 +143,7 @@
     
         return (
         <div className="menu-container">
+       
             <div className='welcome-column'>
                 <h1 className="menu-header">Menu</h1>
                 <h2 className="welcome-message">Welcome {customerName}</h2>

@@ -75,11 +75,14 @@ const CartPage = () => {
                     </tr>
                 </tbody>
             </table>
-            <button className="pay-button">
-                <a href={`upi://pay?pa=${'7387870057@ybl'}&am=${totalOrderValue}&cu=INR`}>Pay by UPI</a>
-            </button>
 
-            <Link to="/menu" className="back-to-menu-btn">Go back to Menu</Link>
+            {/* Bottom container for buttons */}
+            <div className="bottom-buttons">
+                <Link to="/menu" className="back-to-menu-btn">Go back to Menu</Link>
+                <a href={`upi://pay?pa=${'7387870057@ybl'}&am=${totalOrderValue}&cu=INR`}><button className="pay-button">
+                    Pay bill of {totalOrderValue}
+                </button></a>
+            </div>
         </div>
     );
 };
