@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <>
-    <Router>
+    <HashRouter>
  
       <div className='main'>
       <Routes>
@@ -41,7 +41,7 @@ const App = () => {
       </Routes>
       </div>
 
-    </Router>
+    </HashRouter>
     </>
   )
 }
