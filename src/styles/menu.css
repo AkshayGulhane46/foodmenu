@@ -102,7 +102,8 @@
 .quantity-btns {
     display: flex;
     align-items: center;
-    border: 1px solid #D14D72;
+    border: 1px solid #d14d7282;
+    box-shadow: 1px 2px 0px 0px #FCC8D1;
 }
 
 .quantity-btn {

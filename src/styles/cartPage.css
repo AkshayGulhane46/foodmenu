@@ -43,19 +43,37 @@
 .cart-page{
     padding: 10px;
 }
+/* Add material design styles to the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    font-size: 12px;
 
-th{
-    background-color: #FCC8D1;
 }
 
-tr{
-    border: 1.5px solid #D14D72;
+th {
+    background-color: #FCC8D1; /* Light pink background for table header */
+    color: #ffffff; /* White text color */
+    font-weight: bold; /* Bold font weight */
+    padding: 10px; /* Padding for table header cells */
+    font-size: larger;
+
 }
 
-td{
-    border: 1px solid #FCC8D1;
+td {
+    border: 1px solid #FCC8D1; /* Light pink border for table cells */
+    padding: 10px; /* Padding for table cells */
 }
 
-table{
-    margin-bottom: 20vh;
+tr {
+    border: 1.5px solid #D14D72; /* Medium pink border for table rows */
 }
+
+
+
+/* Add padding to the bottom of the table to prevent overlapping with bottom buttons */
+.cart-page {
+    padding-bottom: 20vh; /* Adjust as needed */
+}
+
