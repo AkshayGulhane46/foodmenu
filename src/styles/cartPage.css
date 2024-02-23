@@ -23,26 +23,21 @@
     text-align: center;
     height: 6vh;
     font-weight: bold;
+    box-shadow: 0px 5px 0px 0px #FCC8D1;
 }
 
-.pay-button:hover {
-    background-color: #0056b3;
-}
 
 .back-to-menu-btn {
     color: white;
     text-decoration: none;
     transition: color 0.3s ease;
-    background-color: #FFABAB;
+    background-color: #ff9090;;
     padding: 10px;
     border-radius: 10px;
     width: 40vw;
     text-align: center;
     font-weight: bold;
-}
-
-.back-to-menu-btn:hover {
-    color: #0056b3;
+    box-shadow: 0px 5px 0px 0px #FCC8D1;
 }
 
 .cart-page{
@@ -59,4 +54,8 @@ tr{
 
 td{
     border: 1px solid #FCC8D1;
+}
+
+table{
+    margin-bottom: 20vh;
 }

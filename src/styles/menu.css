@@ -102,20 +102,16 @@
 .quantity-btns {
     display: flex;
     align-items: center;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid #D14D72;
 }
 
 .quantity-btn {
-    background-color: #000000;
-    color: #fff;
+    background-color: #FCC8D1;
+    color: black;
     cursor: pointer;
+    font-weight: bolder;
 }
 
-.add-to-cart-btn:hover,
-.quantity-btn:hover {
-    background-color: grey;
-    color: white;
-}
 
 .quantity {
     padding: 0 8px;
@@ -194,7 +190,7 @@
     background-color: #ff5959;
     color: white;
     border: none;
-    box-shadow: 3px 2px 0px 0px #d6d6d6;
+    box-shadow: 0px 5px 0px 0px #FCC8D1;
     font-weight: bold;
     border-radius: 0.5rem;
     padding: 8px 16px;
@@ -203,10 +199,13 @@
     display: inline-block;
     font-size: 1.2rem;
     cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.add-to-cart-btn:hover {
-    background-color: grey;
+.add-to-cart-btn:active {
+    background-color: #FCC8D1;
+    box-shadow: 0px 1px 0px 0px #FCC8D1;
+   
 }
 
 
@@ -231,11 +230,14 @@
     cursor: pointer; /* Change cursor on hover */
     border-radius: 5px; /* Add border radius */
     transition: background-color 0.3s; /* Add transition for smoother hover effect */
+    color: black;
 }
 
 .category-tab.active {
     background-color: #D14D72; /* Change background color for active tab */
     color: white; /* Change text color for active tab */
+    box-shadow: 0px 3px 0px 0px #FCC8D1;
+    font-weight: bolder;
 }
 
 
@@ -264,10 +266,11 @@
     text-align: center;
     font-weight: bold;
     font-size: 20px;
+    box-shadow: 0px 5px 0px 0px #FCC8D1;
 }
 
 .cart-button:hover {
-    background-color: #0056b3; /* Adjust button color on hover */
+    box-shadow: 0px 1px 0px 0px #FCC8D1;
 }
 
 .veg-dish {
@@ -290,6 +293,7 @@
     .search-box {
         max-width: 100%; /* Make search box full width on mobile devices */
         border: 1px solid #D14D72;
+        box-shadow: 0px 4px 0px 0px #FCC8D1;
     }
 }
 
