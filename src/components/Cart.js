@@ -58,6 +58,7 @@ const CartPage = () => {
                     <tr>
                         <th>Dish</th>
                         <th>Price</th>
+                        <th>Total</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -66,11 +67,12 @@ const CartPage = () => {
                         <tr key={index}>
                             <td>{item.quantity} x {item.DishName}</td>
                             <td>{item.DishPrice}</td>
+                            <td>{item.DishPrice * item.quantity}</td>
                             <td>{item.status}</td>
                         </tr>
                     ))}
                     <tr>
-                        <td colSpan="2">Total Order Value:</td>
+                        <td colSpan="3">Total Order Value:</td>
                         <td>{totalOrderValue}</td>
                     </tr>
                 </tbody>

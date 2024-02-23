@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, doc, updateDoc, deleteDoc, setDoc , serverTimestamp ,getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { Link } from 'react-router-dom';
 import '../styles/adminPage.css'; // Import CSS file
 
 const AdminPage = () => {
@@ -89,6 +90,8 @@ const AdminPage = () => {
     return (
         <div className="admin-page">
             <h1>Admin Page</h1>
+            <div className='add-dish-btn'><Link to='/addDish'><button>Add new dish</button></Link></div>   
+       
             <div className="customer-grid">
                 {customers.map(customer => (
                     <div key={customer.id} className="customer-box">

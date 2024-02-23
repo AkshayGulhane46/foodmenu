@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, getDocs, serverTimestamp,deleteDoc,doc } from "firebase/firestore";
 import { db, storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import "../styles/AddDish.css"
@@ -15,6 +15,8 @@ const AddDish = () => {
     const [dishImage, setDishImage] = useState(null);
     const [dishes, setDishes] = useState([]);
     const [dishCat, setDishCat] = useState("");
+    const [isUploading, setIsUploading] = useState(false); // State for tracking image upload status
+
 
 
     useEffect(() => {
@@ -45,13 +47,15 @@ const AddDish = () => {
         try {
             let imageURL = ""; // Initialize imageURL variable
             if (dishImage) {
-                const storageRef = ref(storage, `dish_images/${dishImage.name}`);
+                const storageRef = ref(storage, `dish_images/${dishImage.name}`);    
+                 setIsUploading(true); // Start uploading indicator
                 
                 // Upload the image to Firebase Storage
                 await uploadBytes(storageRef, dishImage);
 
                 // Get the download URL of the uploaded image
                 imageURL = await getDownloadURL(storageRef);
+                setIsUploading(false);
             }
 
             // Add the dish data to Firestore with the image URL
@@ -72,6 +76,7 @@ const AddDish = () => {
             await fetchDishes();
         } catch (e) {
             console.error("Error adding document: ", e);
+            setIsUploading(false); // Stop uploading indicator if an error occurs
         }
     }
 
@@ -80,6 +85,17 @@ const AddDish = () => {
         const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setDishes(data);
     }
+
+    const removeDish = async (dishId) => {
+        try {
+            // Delete the dish document from Firestore
+            await deleteDoc(doc(db, 'dishes', dishId));
+            // Fetch updated list of dishes
+            await fetchDishes();
+        } catch (error) {
+            console.error('Error removing dish:', error);
+        }
+    };
    
     useEffect(() => {
         fetchDishes();
@@ -106,6 +122,7 @@ const AddDish = () => {
 
     return (
         <div>
+            {isUploading && <div className="loading-indicator">Uploading...</div>}
             <div className="form-container">
             <h1>Add Dish</h1>
             <form onSubmit={addDish}>
@@ -195,11 +212,12 @@ const AddDish = () => {
                 <thead>
                     <tr>
                         <th>Dish Name</th>
-                        <th>Preparation Time</th>
+                        <th>Time</th>
                         <th>About Dish</th>
                         <th>Dish Price</th>
                         <th>Veg</th>
                         <th>Dish Image</th>
+                        <th>Actions</th> {/* New column for actions */}
                     </tr>
                 </thead>
                 <tbody>
@@ -214,6 +232,10 @@ const AddDish = () => {
                                 {dish.DishImage && (
                                     <img src={dish.DishImage} alt="Dish" style={{ width: '100px', height: '100px' }} />
                                 )}
+                            </td>
+                            <td>
+                                {/* Link or button to remove the dish */}
+                                <button onClick={() => removeDish(dish.id)}>Remove Dish</button>
                             </td>
                         </tr>
                     ))}

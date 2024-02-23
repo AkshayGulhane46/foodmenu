@@ -113,7 +113,8 @@
 
 .add-to-cart-btn:hover,
 .quantity-btn:hover {
-    background-color: #45a049;
+    background-color: grey;
+    color: white;
 }
 
 .quantity {
@@ -139,7 +140,7 @@
     align-content: flex-start;
     flex-wrap: wrap;
     justify-content: flex-end;
-    min-width: 50%;
+    max-width: 50%;
 
 }
 
@@ -190,49 +191,53 @@
 
 
 .add-to-cart-btn {
-    background-color: #000000;
+    background-color: #ff5959;
     color: white;
     border: none;
-    box-shadow: 3px 2px 0px 0px #4b4b4b;
+    box-shadow: 3px 2px 0px 0px #d6d6d6;
     font-weight: bold;
     border-radius: 0.5rem;
     padding: 8px 16px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
 }
 
 .add-to-cart-btn:hover {
-    background-color: #45a049;
+    background-color: grey;
 }
 
 
 
 
+/* menu.css */
+
 .category-tabs-container {
-    display: flex;
     overflow-x: auto;
     white-space: nowrap;
-    padding-bottom: 10px; /* Add some bottom padding to separate from content */
+    display: flex;
+    padding: 10px 0;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .category-tab {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 10px 20px;
-    margin-right: 10px; /* Adjust as needed */
-    cursor: pointer;
-    border-radius: 8px;
-    outline: none;
-    transition: background-color 0.3s ease;
+    padding: 8px 16px; /* Adjust padding for better button spacing */
+    margin-right: 10px; /* Add margin between buttons */
+    background-color: #FEF2F4; /* Set background color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor on hover */
+    border-radius: 5px; /* Add border radius */
+    transition: background-color 0.3s; /* Add transition for smoother hover effect */
 }
 
 .category-tab.active {
-    background-color: rgb(0, 0, 0);
-    color: #fff;
+    background-color: #D14D72; /* Change background color for active tab */
+    color: white; /* Change text color for active tab */
 }
+
 
 .cart-button-container {
     position: fixed;
@@ -242,14 +247,14 @@
     display: flex;
     justify-content: center;
     padding: 10px 0;
-    background-color: #ffffff; /* Adjust background color as needed */
-    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+    background-color: hwb(350 95% 0%);
+    box-shadow: 0px -2px 5px 0px rgb(0 0 0 / 4%);
 }
 
 .cart-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #ff0000;
+    background-color: #D14D72;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -284,6 +289,7 @@
 @media only screen and (max-width: 600px) {
     .search-box {
         max-width: 100%; /* Make search box full width on mobile devices */
+        border: 1px solid #D14D72;
     }
 }
 
@@ -292,15 +298,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-bottom: 1px solid #f5eeee;
-    padding-top: 6px;
+    padding-top: 10px;
 }
 
 .sticky {
     position: fixed;
-    top: 0;
+    top: 0px;
     width: 100vw;
     z-index: 1000;
     padding-top: 30px;
-    background-color: white;
+    background-color: #FEF2F4;
+    box-shadow: -3px 0px 20px 20px #FEF2F4;
 }

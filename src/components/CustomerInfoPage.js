@@ -4,6 +4,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../styles/CustomerInfoPage.css';
 
+
 const CustomerInfoPage = () => {
     const [customerName, setCustomerName] = useState("");
     const [tableNumber, setTableNumber] = useState("");
@@ -76,10 +77,12 @@ const CustomerInfoPage = () => {
             <h1 className="page-title">Welcome to our Hotel</h1>
             <form className="info-form" onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label className="form-label">
-                        Customer Name:
-                        <input className="form-input" type="text" value={customerName} onChange={(e) => setCustomerName(e.target.value)} />
-                    </label>
+                  
+
+                        <input className="form-input" type="text" value={customerName} onChange={(e) => setCustomerName(e.target.value)} 
+                        placeholder='Enter your name'
+                        />
+        
                 </div>
                 <button className="submit-button" type="submit">Let's order your food</button>
             </form>

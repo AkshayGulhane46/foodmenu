@@ -102,5 +102,12 @@ th {
     background-color: #45a049;
 }
 
+.loading-indicator{
+    display: flex;
+    background-color: #45a049;
+    width: 100vw;
+    height: 100vh;
+}
+
 
 

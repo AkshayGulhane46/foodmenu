@@ -95,3 +95,15 @@
     border: none;
     border-radius: 5px;
 }
+
+.add-dish-btn button{
+    background-color: rgb(17, 255, 0);
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    padding: 10px;
+    margin: 10px;
+}

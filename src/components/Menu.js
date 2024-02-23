@@ -143,21 +143,11 @@
     
         return (
         <div className="menu-container">
-       
-            <div className='welcome-column'>
+              <div className='welcome-column'>
                 <h1 className="menu-header">Menu</h1>
                 <h2 className="welcome-message">Welcome {customerName}</h2>
             </div>
-            <div id= "myHeader" className={isSticky ? "sticky" : ""}>
-                <div className="search-box-container"></div>
-                    <input
-                        type="text"
-                        placeholder="Search by dish name"
-                        value={searchQuery}
-                        onChange={handleSearchInputChange}
-                        className="search-box"
-                    />
-                    <div className="category-tabs-container">
+             <div className="category-tabs-container">
                         <button
                             className={`category-tab ${selectedCat === "" ? 'active' : ''}`}
                             onClick={() => handleCatFilterChange({ target: { value: "" } })}
@@ -173,12 +163,25 @@
                             >
                                 {cat}
                             </button>
-                        )
-                    )
-                }
-            </div>
-        </div>
+                        ))}
+                    </div>
+          
 
+            <div id= "myHeader" className={isSticky ? "sticky" : ""}>
+                <div className="search-box-container">
+                    <input
+                        type="text"
+                        placeholder="Search by dish name"
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                        className="search-box"
+                    />      
+                    </div>
+                
+                   
+        </div>
+         
+                            
         <div className="dish-list-container">
         {selectedCat !== "" ? (
             <div>
@@ -210,7 +213,7 @@
                                         </div>
                                     </div>
                                     <div className='add-to-cart'>
-                                        <button className="add-to-cart-btn" onClick={() => addToCart(dish)}>Add to Cart</button>
+                                        <button className="add-to-cart-btn" onClick={() => addToCart(dish)}>Order +</button>
                                     </div>
                                 </div>
                             </div>
@@ -250,7 +253,7 @@
                                        </div>
                                    </div>
                                    <div className='add-to-cart'>
-                                       <button className="add-to-cart-btn" onClick={() => addToCart(dish)}>Add to Cart</button>
+                                       <button className="add-to-cart-btn" onClick={() => addToCart(dish)}>Order +</button>
                                    </div>
                                </div>
                            </div>
@@ -262,7 +265,7 @@
         )}
     </div>
     <div className="cart-button-container">
-     <Link to={`/cart?cartKey=${encodeURIComponent(customerID)}`} className="cart-button">Go to Cart</Link></div>            
+     <Link to={`/cart?cartKey=${encodeURIComponent(customerID)}`} className="cart-button">Go to your order</Link></div>            
     </div>
 
         );

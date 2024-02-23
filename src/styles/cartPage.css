@@ -3,17 +3,16 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #ffffff;
-    padding-bottom: 10px;
-    padding-top: 10px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    background-color: #FEF2F4;
+    box-shadow: 0px -2px 5px 0px rgb(0 0 0 / 4%);
+    
 }
 
 .pay-button {
-    background-color: #ff0000;
+    background-color: #D14D72;
     color: #ffffff;
     border: none;
     padding: 10px;
@@ -34,7 +33,7 @@
     color: white;
     text-decoration: none;
     transition: color 0.3s ease;
-    background-color: #fa9cb6;
+    background-color: #FFABAB;
     padding: 10px;
     border-radius: 10px;
     width: 40vw;
@@ -51,10 +50,13 @@
 }
 
 th{
-    border: 1px solid black;
-    background-color: #ff9696;
+    background-color: #FCC8D1;
 }
 
 tr{
-    border: 1px solid beige;
+    border: 1.5px solid #D14D72;
+}
+
+td{
+    border: 1px solid #FCC8D1;
 }
