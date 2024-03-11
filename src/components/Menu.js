@@ -100,7 +100,7 @@
         
         const decrementQuantity = (dishId) => {
             const updatedDishes = dishes.map(dish => {
-                if (dish.id === dishId && dish.quantity > 0) {
+                if (dish.id === dishId && dish.quantity > 1) {
                     dish.quantity--;
                 }
                 return dish;

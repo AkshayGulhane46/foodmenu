@@ -62,7 +62,8 @@
 }
 
 .quantity-btn:hover {
-    background-color: #ddd;
+    background-color: #ff5959;
+    box-shadow: 1px 2px 0px 0px #ff5959;
 }
 
 
