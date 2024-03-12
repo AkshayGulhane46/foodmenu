@@ -5,6 +5,7 @@
     import { Link } from 'react-router-dom';
     import "../styles/menu.css"
 
+
     const Menu = ({ customerId }) => {
         const [dishes, setDishes] = useState([]);
         const [dishCats, setDishCats] = useState([]);
