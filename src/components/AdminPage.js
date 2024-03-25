@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, doc, updateDoc, deleteDoc, setDoc , serverTimestamp ,getDoc } from 'firebase/firestore';
+import { collection, getDoc, doc, updateDoc, deleteDoc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 import { Link } from 'react-router-dom';
 import '../styles/adminPage.css'; // Import CSS file
@@ -8,7 +8,8 @@ const AdminPage = () => {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
-        fetchCustomers();
+        const unsubscribe = fetchCustomers(); // Subscribe to real-time updates
+        return () => unsubscribe(); // Cleanup function to unsubscribe from updates
     }, []);
 
     const calculateTotalOrderValue = (cartItems) => {
@@ -19,12 +20,14 @@ const AdminPage = () => {
         return totalValue.toFixed(2); // Convert to 2 decimal places
     };
 
-    const fetchCustomers = async () => {
+    const fetchCustomers = () => {
         try {
             const customersCollection = collection(db, 'customers');
-            const snapshot = await getDocs(customersCollection);
-            const customerData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            setCustomers(customerData);
+            const unsubscribe = onSnapshot(customersCollection, (snapshot) => {
+                const customerData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                setCustomers(customerData);
+            });
+            return unsubscribe; // Return the unsubscribe function
         } catch (error) {
             console.error('Error fetching customers:', error);
         }
@@ -33,7 +36,6 @@ const AdminPage = () => {
     const removeCustomer = async (customerId) => {
         try {
             await deleteDoc(doc(db, 'customers', customerId));
-            fetchCustomers(); // Refresh the customer list
         } catch (error) {
             console.error('Error removing customer:', error);
         }
@@ -48,7 +50,6 @@ const AdminPage = () => {
                 const updatedCartItems = [...customerData.cartItems];
                 updatedCartItems[itemIndex].status = newStatus;
                 await updateDoc(customerDocRef, { cartItems: updatedCartItems });
-                fetchCustomers(); // Refresh the customer list
             }
         } catch (error) {
             console.error('Error changing status:', error);
@@ -64,7 +65,6 @@ const AdminPage = () => {
                 const updatedCartItems = [...customerData.cartItems];
                 updatedCartItems.splice(itemIndex, 1); // Remove item at specified index
                 await updateDoc(customerDocRef, { cartItems: updatedCartItems });
-                fetchCustomers(); // Refresh the customer list
             }
         } catch (error) {
             console.error('Error removing item:', error);
@@ -80,7 +80,6 @@ const AdminPage = () => {
                 const updatedCartItems = [...customerData.cartItems];
                 updatedCartItems[itemIndex].quantity = newQuantity;
                 await updateDoc(customerDocRef, { cartItems: updatedCartItems });
-                fetchCustomers(); // Refresh the customer list
             }
         } catch (error) {
             console.error('Error updating quantity:', error);

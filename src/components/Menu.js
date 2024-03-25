@@ -17,7 +17,6 @@
         const [isSticky, setIsSticky] = useState(false);
         const navigate = useNavigate();
 
-        
 
         useEffect(() => {
             fetchCustomerInfo();
@@ -176,11 +175,9 @@
                         value={searchQuery}
                         onChange={handleSearchInputChange}
                         className="search-box"
-                    />      
-                    </div>
-                
-                   
-        </div>
+                    />     
+               </div> 
+            </div>
          
                             
         <div className="dish-list-container">
@@ -271,5 +268,7 @@
 
         );
     };
+
+
 
     export default Menu;

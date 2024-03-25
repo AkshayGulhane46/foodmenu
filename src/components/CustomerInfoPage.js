@@ -74,10 +74,10 @@ const CustomerInfoPage = () => {
 
     return (
         <div className="customer-info-page">
-            <h1 className="page-title">Welcome to our Hotel</h1>
+            <h1 className="page-title">Welcome to our our Hotel</h1>
             <form className="info-form" onSubmit={handleSubmit}>
                 <div className="form-group">
-                  
+
 
                         <input className="form-input" type="text" value={customerName} onChange={(e) => setCustomerName(e.target.value)} 
                         placeholder='Enter your name'

@@ -1,79 +1,99 @@
-.bottom-buttons {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+.cart-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.cart-page h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align-last: center;
+
+}
+
+.item-status{
+    border: 1px solid #d14d72;
+    margin: 5px;
+    font-size: 13px;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.cart-items {
+    margin-bottom: 20px;
+
+}
+
+.cancel-button{
+    border: 1px solid #d14d72;
+    margin: 5px;
+    font-size: 13px;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #D14D72;
+    color: white;
+}
+
+.cart-item {
     display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    background-color: #FEF2F4;
-    box-shadow: 0px -2px 5px 0px rgb(0 0 0 / 4%);
-    
+    align-items: center;
+    border: 1px solid #d14d7287;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: bold;
+}
+
+.item-price, .item-total {
+    margin-left: auto;
+}
+
+.total-order-value {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .pay-button {
     background-color: #D14D72;
-    color: #ffffff;
+    color: white;
     border: none;
-    padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 40vw;
-    text-align: center;
-    height: 6vh;
     font-weight: bold;
-    box-shadow: 0px 5px 0px 0px #FCC8D1;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
+.pay-button:hover {
+    background-color: #FF738E;
+}
 
 .back-to-menu-btn {
-    color: white;
+    color: #D14D72;
+    font-weight: bold;
     text-decoration: none;
     transition: color 0.3s ease;
-    background-color: #ff9090;;
-    padding: 10px;
-    border-radius: 10px;
-    width: 40vw;
-    text-align: center;
-    font-weight: bold;
-    box-shadow: 0px 5px 0px 0px #FCC8D1;
 }
 
-.cart-page{
-    padding: 10px;
+.back-to-menu-btn:hover {
+    color: #FF738E;
 }
-/* Add material design styles to the table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
-    font-size: 12px;
-
-}
-
-th {
-    background-color: #FCC8D1; /* Light pink background for table header */
-    color: #ffffff; /* White text color */
-    font-weight: bold; /* Bold font weight */
-    padding: 10px; /* Padding for table header cells */
-    font-size: larger;
-
-}
-
-td {
-    border: 1px solid #FCC8D1; /* Light pink border for table cells */
-    padding: 10px; /* Padding for table cells */
-}
-
-tr {
-    border: 1.5px solid #D14D72; /* Medium pink border for table rows */
-}
-
-
-
-/* Add padding to the bottom of the table to prevent overlapping with bottom buttons */
-.cart-page {
-    padding-bottom: 20vh; /* Adjust as needed */
-}
-

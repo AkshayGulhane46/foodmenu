@@ -264,11 +264,29 @@
     border-radius: 5px;
     text-decoration: none;
     font-size: 16px;
-    width: 80vw;
+    width: 80%;
     text-align: center;
     font-weight: bold;
     font-size: 20px;
     box-shadow: 0px 5px 0px 0px #FCC8D1;
+}
+
+@media only screen and (min-width: 768px){
+    .cart-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #D14D72;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        width: 30%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        box-shadow: 0px 5px 0px 0px #FCC8D1;
+    }
 }
 
 .cart-button:hover {
@@ -283,9 +301,9 @@
 /* Regular styles for search box */
 .search-box {
     width: 80vw;
-    max-width: 300px; /* Adjust width as needed */
+    max-width: 300px;
     padding: 10px;
-    border: 1px solid #000000;
+    border: 2px solid #cb4a6f;
     border-radius: 5px;
     margin-bottom: 20px;
 }
@@ -311,6 +329,50 @@
     position: fixed;
     top: 0px;
     width: 100vw;
+    z-index: 1000;
+    padding-top: 30px;
+    background-color: #FEF2F4;
+    box-shadow: -3px 0px 20px 20px #FEF2F4;
+}
+
+
+.dish-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow flex items to wrap */
+    align-items: center; /* Align flex items vertically */
+    gap: 10px; /* Add gap between flex items */
+}
+
+.left-container {
+    flex: 1; /* Expand to fill available space */
+}
+
+.right-container {
+    flex-shrink: 0; /* Prevent shrinking */
+    max-width: 40%; /* Limit maximum width */
+}
+
+.bottom-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Ensure full width */
+}
+
+/* Adjustments for sticky header */
+#myHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    width: 100%; /* Ensure full width */
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0; /* Ensure sticky header stays on the left */
+    right: 0; /* Ensure sticky header spans the full width */
     z-index: 1000;
     padding-top: 30px;
     background-color: #FEF2F4;
