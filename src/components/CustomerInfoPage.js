@@ -75,7 +75,7 @@ const CustomerInfoPage = () => {
     return (
         <div className="customer-info-page">
             <img className='logo' src='images/logo.png'/>
-            <h1 className="page-title">Welcome to our our Hotel</h1>
+            <h1 className="page-title">Welcome to our restaurant</h1>
             <p>Kindly enter your name to continue</p>
             <form className="info-form" onSubmit={handleSubmit}>
                 <div className="form-group">
