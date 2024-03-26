@@ -72,9 +72,11 @@ const CartPage = () => {
 
     return (
         <div className="cart-page">
+            {cartItems.length === 0?<h2>Your cart is empty</h2>:<>
             <h1>Your Cart</h1>
             <div className="cart-items">
-                {cartItems.map((item, index) => (
+               
+                {cartItems.length > 0 && cartItems.map((item, index) => (
                     <div className="cart-item" key={index}>
                         <div className="item-details">
                             <div className="item-name">{item.quantity} X {item.DishName}</div>
@@ -87,19 +89,26 @@ const CartPage = () => {
                         )}
 
                     </div>
-                ))}
+                ))
+           
+                }
             </div>
+            <p style={{fontStyle:'italic',color:'#d14d72'}}>*Customer cannot cancel an item if its preparing</p>
             <div className="total-order-value">Total Order Value: {totalOrderValue}</div>
-
+            </>}
             {/* Bottom container for buttons */}
             <div className="bottom-buttons">
-                <Link to="/menu" className="back-to-menu-btn">Continue Shopping</Link>
+                <Link to="/menu" className="back-to-menu-btn">Go Back to menu</Link>
                 <button className="pay-button" onClick={handlePayment}>
                     Pay Total: {totalOrderValue}
                 </button>
             </div>
+           
         </div>
+            
     );
+    
 };
+
 
 export default CartPage;

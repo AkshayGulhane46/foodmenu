@@ -74,11 +74,11 @@ const CustomerInfoPage = () => {
 
     return (
         <div className="customer-info-page">
+            <img className='logo' src='images/logo.png'/>
             <h1 className="page-title">Welcome to our our Hotel</h1>
+            <p>Kindly enter your name to continue</p>
             <form className="info-form" onSubmit={handleSubmit}>
                 <div className="form-group">
-
-
                         <input className="form-input" type="text" value={customerName} onChange={(e) => setCustomerName(e.target.value)} 
                         placeholder='Enter your name'
                         />
