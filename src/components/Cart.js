@@ -100,7 +100,7 @@ const CartPage = () => {
             <div className="bottom-buttons">
                 <Link to="/menu" className="back-to-menu-btn">Go Back to menu</Link>
                 <button className="pay-button" onClick={handlePayment}>
-                    Pay Total: {totalOrderValue}
+                    Pay Total : {totalOrderValue}
                 </button>
             </div>
            
