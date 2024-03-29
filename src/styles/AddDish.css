@@ -21,15 +21,7 @@ form label {
     margin-bottom: 10px;
 }
 
-form input[type="text"],
-form input[type="file"],
-form input[type="checkbox"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+
 
 form button {
     background-color: #4CAF50;
@@ -79,8 +71,8 @@ th {
 }
 
 .form-container input[type="text"],
-.form-container input[type="file"],
-.form-container input[type="checkbox"] {
+.form-container input[type="file"] 
+.form-container input[type="number"] {
     width: calc(100% - 20px);
     padding: 6px;
     margin-bottom: 8px;
@@ -90,7 +82,7 @@ th {
 
 .form-container button {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #000000;
     color: white;
     padding: 10px;
     border: none;
@@ -99,15 +91,25 @@ th {
 }
 
 .form-container button:hover {
-    background-color: #45a049;
+   font-size: large;
+   background-color: black;
 }
 
 .loading-indicator{
     display: flex;
     background-color: #45a049;
-    width: 100vw;
-    height: 100vh;
+    width: 10vw;
+    height: 10vh;
 }
 
+.remove_dish_btn{
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
 

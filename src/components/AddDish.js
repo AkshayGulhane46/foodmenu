@@ -18,7 +18,6 @@ const AddDish = () => {
     const [isUploading, setIsUploading] = useState(false); // State for tracking image upload status
 
 
-
     useEffect(() => {
         fetchDishCategories(); // Fetch dish categories when component mounts
     }, []);
@@ -122,7 +121,9 @@ const AddDish = () => {
 
     return (
         <div>
-            {isUploading && <div className="loading-indicator">Uploading...</div>}
+            {isUploading && <div className="loading-indicator"><>
+            <p>The dish is getting added</p>
+            </></div>}
             <div className="form-container">
             <h1>Add Dish</h1>
             <form onSubmit={addDish}>
@@ -235,7 +236,7 @@ const AddDish = () => {
                             </td>
                             <td>
                                 {/* Link or button to remove the dish */}
-                                <button onClick={() => removeDish(dish.id)}>Remove Dish</button>
+                                <button className="remove_dish_btn"onClick={() => removeDish(dish.id)}>Remove Dish</button>
                             </td>
                         </tr>
                     ))}

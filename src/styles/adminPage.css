@@ -1,17 +1,19 @@
 .admin-page {
     padding: 20px;
+
 }
 
 .customer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+   
 }
 
 .customer-box {
-    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
+    background-color: #FEF2F4;
 }
 
 .customer-box > * {
@@ -27,14 +29,13 @@
 .order-table td {
     width: fit-content;
     padding: 2px;
-    border-bottom: 1px solid #ddd;
     text-align: left;
     font-size: small;
     text-align: -webkit-center;
 }
 
 .order-table th {
-    background-color: #f0f0f0;
+    background-color: #ff9f9f;
 }
 
 .order-table td:last-child {
@@ -97,13 +98,23 @@
 }
 
 .add-dish-btn button{
-    background-color: rgb(17, 255, 0);
+    background-color: rgb(0, 0, 0);
     color: white;
     padding: 5px;
     font-size: 12px;
     border: none;
     border-radius: 5px;
-    color: black;
     padding: 10px;
     margin: 10px;
+}
+
+.order-table button{
+padding: 5px 8px;
+/* margin-right: 5px; */
+font-size: 12px;
+cursor: pointer;
+background: black;
+color: white;
+border-radius: 5px;
+border: none;
 }

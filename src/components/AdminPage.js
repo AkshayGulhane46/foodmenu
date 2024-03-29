@@ -94,9 +94,9 @@ const AdminPage = () => {
             <div className="customer-grid">
                 {customers.map(customer => (
                     <div key={customer.id} className="customer-box">
-                        <div className='name-div'>Customer Name - {customer.customerName}</div>
-                        <div className='total-value-div'>Total: {calculateTotalOrderValue(customer.cartItems)}</div>
-                        <div className='table-number-div'>Table no.: {customer.tableNumber}</div>
+                        <div className='name-div'><strong>Customer Name : </strong>{customer.customerName}</div>
+                        <div className='total-value-div'><strong>Total: </strong>{calculateTotalOrderValue (customer.cartItems)}</div>
+                        <div className='table-number-div'><strong>Table no.: </strong> {customer.tableNumber}</div>
                         <div className='remove-customer'>
                             <button onClick={() => removeCustomer(customer.id)}>Remove Customer</button>
                         </div>
