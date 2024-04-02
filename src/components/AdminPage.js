@@ -136,7 +136,7 @@ const AdminPage = () => {
                                                 {item.status === "Preparing" && (
                                                     <>
                                                         <button onClick={() => changeStatus(customer.id, index, "Done")}>Done</button>
-                                                        <br /> {/* New line */}
+                                                        <br />
                                                     </>
                                                 )}
                                                  </td>

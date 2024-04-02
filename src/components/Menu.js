@@ -7,6 +7,15 @@
 
 
     const Menu = ({ customerId }) => {
+        // Inline style for order button 
+        // saved in props 
+        const [buttonStyle, setButtonStyle] = useState({
+            display: 'inline-block',
+            padding: '10px 20px',
+            backgroundColor: '#D14D72',
+            color: '#ffffff',
+        });
+
         const [dishes, setDishes] = useState([]);
         const [dishCats, setDishCats] = useState([]);
         const [selectedCat, setSelectedCat] = useState('');
@@ -15,7 +24,10 @@
         const [cartItems, setCartItems] = useState([]);
         const [searchQuery, setSearchQuery] = useState('');
         const [isSticky, setIsSticky] = useState(false);
-        const navigate = useNavigate();
+        const [buttontext, setButtonText] = useState("Go to your Order ->")
+        const navigate = useNavigate(); 
+
+   
 
 
         useEffect(() => {
@@ -69,15 +81,29 @@
             const value = e.target.value;
             setSelectedCat(value);
         };
+        const showNotification = (name) => {
+            // Update button text and style
+            setButtonText(name + " is ordered >>");
+            setButtonStyle(prevStyle => ({
+                ...prevStyle,
+                backgroundColor: '#ff5959', 
+            }));
+            
+            setTimeout(() => {
+                setButtonText("Go to your order ->");
+                setButtonStyle(prevStyle => ({
+                    ...prevStyle,
+                    backgroundColor: '#D14D72', 
+                }));
+            }, 1500);
+        };
 
 
 
         const addToCart = async (dish) => {
             try {
                 const customerDocRef = doc(db, "customers", customerID);
-
                 const customerDocSnapshot = await getDoc(customerDocRef);
-                
                 if (customerDocSnapshot.exists()) {
                     const customerData = customerDocSnapshot.data();
                     const existingCartItems = customerData.cartItems || [];
@@ -90,6 +116,7 @@
         
                     // Update cart items in local storage
                     setCartItems(updatedCartItems);
+                    showNotification(dish.DishName);
                 } else {
                     console.log('Customer document not found');
                 }
@@ -144,7 +171,7 @@
         return (
         <div className="menu-container">
               <div className='welcome-column'>
-                <h1 className="menu-header">Menu</h1>
+                <h1 className="menu-header">Restaurant Menu</h1>
                 <h2 className="welcome-message">Welcome {customerName}</h2>
             </div>
              <div className="category-tabs-container">
@@ -166,7 +193,6 @@
                         ))}
                     </div>
           
-
             <div id= "myHeader" className={isSticky ? "sticky" : ""}>
                 <div className="search-box-container">
                     <input
@@ -262,8 +288,8 @@
             ))
         )}
     </div>
-    <div className="cart-button-container">
-     <Link to={`/cart?cartKey=${encodeURIComponent(customerID)}`} className="cart-button">Go to your order</Link></div>            
+    <div className="cart-button-container ">
+     <Link to={`/cart?cartKey=${encodeURIComponent(customerID)}`} className="cart-button" style={buttonStyle}>  {buttontext} </Link></div>            
     </div>
 
         );

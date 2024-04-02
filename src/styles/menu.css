@@ -271,6 +271,7 @@
     box-shadow: 0px 5px 0px 0px #FCC8D1;
 }
 
+
 @media only screen and (min-width: 768px){
     .cart-button {
         display: inline-block;
@@ -287,6 +288,10 @@
         font-size: 20px;
         box-shadow: 0px 5px 0px 0px #FCC8D1;
     }
+
+    
+
+
 }
 
 .cart-button:hover {

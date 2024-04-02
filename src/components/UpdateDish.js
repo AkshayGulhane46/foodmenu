@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { collection, updateDoc ,addDoc, getDocs, serverTimestamp,deleteDoc,doc } from "firebase/firestore";
 import { db, storage } from '../firebase';
-import { Link } from 'react-router-dom';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import "../styles/AddDish.css"
 import { Await } from 'react-router-dom';
@@ -18,9 +17,6 @@ const AddDish = () => {
     const [dishes, setDishes] = useState([]);
     const [dishCat, setDishCat] = useState("");
     const [isUploading, setIsUploading] = useState(false); // State for tracking image upload status
-
-
-
 
 
     useEffect(() => {
@@ -246,9 +242,7 @@ const AddDish = () => {
                             <td>
                                 {/* Link or button to remove the dish */}
                                 <button className="remove_dish_btn" onClick={() => removeDish(dish.id)}>Remove Dish</button>
-                                <button className="update_dish_btn">
-                                <a href='/updateDish/${dish.dishId}'>Update</a>
-                                </button>
+                                <button className="update_dish_btn" onClick={()=> updateDish(dish)}>Update Dish</button>
                             </td>
                         </tr>
                     ))}
